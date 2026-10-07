@@ -3,7 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>LG ELECTRONICS & ACCESSORIES — Business Manager</title>
+<title>LG Electronics & Accessories</title>
+<meta name="description" content="LG ELECTRONICS & ACCESSORIES — Business Manager and Customer App. A Subsidiary of Moore Tech Global Resources.">
+<meta name="theme-color" content="#b00020">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="LG Electronics">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
 <style>
 :root{
   --bg:#f3f6fb;--card:#ffffff;--ink:#14213d;--muted:#667085;--line:#e5eaf2;
@@ -60,9 +68,12 @@ input:focus,select:focus{border-color:#7c3aed;box-shadow:0 0 0 3px rgba(124,58,2
 .final-nav{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.final-nav button{padding:9px 12px;border:1px solid #ccc;border-radius:8px;background:#fff;cursor:pointer}.final-nav button.active{background:#111;color:#fff}.final-sec{display:none}.final-sec.active{display:block}.final-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}.final-card{border:1px solid #ddd;border-radius:10px;padding:14px;background:#fff}.final-table{width:100%;border-collapse:collapse;margin-top:12px}.final-table th,.final-table td{padding:8px;border-bottom:1px solid #e5e5e5;text-align:left;font-size:13px}.final-input,.final-select{padding:9px;border:1px solid #ccc;border-radius:7px;width:100%;box-sizing:border-box}.final-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;align-items:end}.final-btn{padding:9px 13px;border:0;border-radius:7px;cursor:pointer}.final-btn.primary{background:#111;color:#fff}.final-btn.good{background:#18794e;color:#fff}.final-btn.warn{background:#9a6700;color:#fff}.final-btn.danger{background:#b42318;color:#fff}.final-muted{color:#666;font-size:12px}.final-badge{display:inline-block;padding:3px 7px;border-radius:12px;background:#eee;font-size:11px}.final-ok{color:#18794e}.final-warn{color:#9a6700}.final-danger{color:#b42318}.final-toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.final-title{margin:6px 0 12px}.final-kpi{font-size:24px;font-weight:700}.final-print{float:right}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style id="lgea-pwa-css">
+.pwa-brand{display:flex;align-items:center;gap:10px}.pwa-brand img{width:38px;height:38px;border-radius:10px;object-fit:cover}.pwa-tagline{font-size:10px;color:#fecdd3;margin-top:2px}@media(max-width:650px){header{padding:12px 14px}.brand{font-size:15px}.sub{font-size:9px}.side h3{font-size:16px}.loginbox{padding:22px 18px}.loginbox h1{font-size:20px}}</style>
 </head>
 <body>
-<div id="loginScreen"><div class="loginbox"><h1>LG ELECTRONICS & ACCESSORIES</h1><div class="muted">Business Manager • Secure Cloud Login</div><label>Email<input id="loginUser" type="email" autocomplete="username" placeholder="Owner email"></label><br><label>Password<input id="loginPin" type="password" autocomplete="current-password" placeholder="Password"></label><button class="btn primary" style="width:100%;margin-top:15px" onclick="login()">Sign In</button><div id="loginError" class="login-error"></div><div class="muted" style="margin-top:15px;font-size:11px">Secure authentication is provided by Supabase. Your business data is synchronized to the cloud after sign-in.</div></div></div>
+<div id="loginScreen"><div class="loginbox" style="text-align:center"><img src="icons/icon-512.png" alt="LG Electronics & Accessories" style="width:110px;height:110px;border-radius:24px;object-fit:cover;box-shadow:0 12px 30px rgba(0,0,0,.18);margin-bottom:10px"><h1 style="font-size:22px">LG ELECTRONICS & ACCESSORIES</h1><div class="muted">Making Your Place A Home</div><div class="muted" style="font-size:11px;margin-top:-10px;margin-bottom:20px">A Subsidiary of Moore Tech Global Resources</div><label>Email<input id="loginUser" type="email" autocomplete="username" placeholder="Owner email"></label><br><label>Password<input id="loginPin" type="password" autocomplete="current-password" placeholder="Password"></label><button class="btn primary" style="width:100%;margin-top:15px" onclick="login()">Sign In</button><div id="loginError" class="login-error"></div><div class="muted" style="margin-top:15px;font-size:11px">Secure authentication is provided by Supabase. Your business data is synchronized to the cloud after sign-in.</div></div></div>
 <div class="layout">
 <aside class="side">
 <h3>LG ELECTRONICS<br>& ACCESSORIES</h3>
@@ -408,4 +419,4 @@ window.F={select(t,i){window.__sel=window.__sel||{};window.__sel[t]=i;alert(`${t
 ['pBranch','soBranch','hBranch'].forEach(x=>opts(x));let se=document.getElementById('pSup');se.innerHTML='<option value="">Select Supplier</option>'+suppliers().map(x=>`<option>${esc(x)}</option>`).join('')+'<option value="New Supplier">New Supplier</option>';
 document.querySelectorAll('#finalNav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.final-sec').forEach(x=>x.classList.remove('active'));document.querySelectorAll('#finalNav button').forEach(x=>x.classList.remove('active'));document.getElementById('f-'+b.dataset.f).classList.add('active');b.classList.add('active');render()});document.querySelector('#finalNav button').click();render();
 })();
-</script></body></html>
+</script><script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}</script></body></html>
