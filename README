@@ -1,0 +1,17 @@
+# LG ELECTRONICS & ACCESSORIES — Phone App V24
+
+This package upgrades the live V23.3 web app into an installable Progressive Web App (PWA).
+
+Branding:
+- LG ELECTRONICS & ACCESSORIES
+- Making Your Place A Home
+- A Subsidiary of Moore Tech Global Resources
+
+Deployment:
+1. Replace the current Vercel/GitHub `index.html` with this package's `index.html`.
+2. Upload `manifest.json`, `sw.js`, and the `icons/` folder beside it.
+3. Commit to the production `main` branch.
+4. Wait for Vercel to show Ready.
+5. On iPhone, open the production URL in Safari > Share > Add to Home Screen > Open as Web App > Add.
+
+The existing Supabase URL, publishable key, authentication, and cloud business state remain unchanged.
