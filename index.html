@@ -571,4 +571,38 @@ document.querySelectorAll('#finalNav button').forEach(b=>b.onclick=()=>{document
   }
 })();
 </script>
+<script id="lgea-v25-1-customer-fix">
+(function(){
+  function customerPersist(){
+    try{localStorage.setItem(KEY,JSON.stringify(db));}catch(e){console.error(e)}
+    try{if(typeof renderAll==='function')renderAll();}catch(e){console.error(e)}
+    try{if(typeof cloudSaveSoon==='function')cloudSaveSoon();}catch(e){console.error(e)}
+  }
+  window.lgeaOpenCustomerForm=function(){
+    try{
+      var name=window.prompt('Customer full name:','');
+      if(name===null)return;
+      name=String(name).trim();
+      if(!name){window.alert('Please enter the customer name.');return;}
+      var phone=window.prompt('Phone number:',''); if(phone===null)phone='';
+      var email=window.prompt('Email (optional):',''); if(email===null)email='';
+      var branch=(typeof currentBranch!=='undefined' && currentBranch!=='ALL')?currentBranch:'PHYSICAL';
+      db.customers=db.customers||[];
+      var exists=db.customers.some(function(c){return String(c.name||'').trim().toLowerCase()===name.toLowerCase() && (c.branch||'PHYSICAL')===branch;});
+      if(exists){window.alert('A customer with this name already exists in this branch.');return;}
+      var idv=(typeof ref==='function'?ref('CUS'):'CUS-'+Date.now());
+      db.customers.push({id:idv,name:name,phone:String(phone||'').trim(),email:String(email||'').trim(),balance:0,creditLimit:0,branch:branch,createdAt:new Date().toISOString()});
+      try{if(typeof audit==='function')audit('Add Customer',name+' • '+(String(phone||'').trim()||'No phone')+' • '+branch);}catch(e){console.error(e)}
+      customerPersist();
+      window.alert('Customer added successfully.');
+    }catch(e){console.error('Customer creation error:',e);window.alert('Customer could not be added: '+(e&&e.message?e.message:String(e)));}
+  };
+  window.addCustomer=window.lgeaOpenCustomerForm;
+  function bind(){
+    var btn=document.querySelector('#customers button.btn.primary');
+    if(btn)btn.onclick=function(ev){ev.preventDefault();window.lgeaOpenCustomerForm();};
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bind);else bind();
+})();
+</script>
 </body></html>
